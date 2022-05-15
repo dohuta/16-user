@@ -36,7 +36,7 @@ export class UserController {
 
   @Get()
   public async searchUserByEmail(
-    @Query() params,
+    @Query() params
   ): Promise<BaseResponse<FindUserResponse | null>> {
     this.logger.log(
       `${this.searchUserByEmail.name} called::request ${JSON.stringify(params)}`
@@ -81,7 +81,7 @@ export class UserController {
 
   @Get(':id')
   public async getUserById(
-    id: number
+    @Param() id: number
   ): Promise<BaseResponse<FindUserResponse | null>> {
     this.logger.log(`${this.getUserById.name} called::request ${id}`);
 
@@ -119,7 +119,7 @@ export class UserController {
 
   @Post('signup')
   public async createUser(
-    userParams: SignUpPayload
+    @Body() userParams: SignUpPayload
   ): Promise<BaseResponse<SignUpResponse | string>> {
     this.logger.log(
       `${this.createUser.name} called::request ${JSON.stringify(
